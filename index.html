@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+    let playerScore = 0;
+    let computerScore = 0;
+
+    function playRound(playerSelection, computerSelection) {
+        if (playerSelection == computerSelection) {
+          console.log("Tie!"); }
+        else if (playerSelection == "ROCK" && computerSelection == "SCISSORS") {
+          console.log("Player wins!");
+          playerScore += 1;
+        } 
+        else if (playerSelection == "PAPER" && computerSelection == "ROCK") {
+          console.log("Player wins!");
+          playerScore += 1;
+        }
+        else if (playerSelection == "SCISSORS" && computerSelection == "PAPER") {
+          console.log("Player wins!");
+          playerScore += 1;
+        }
+        else {
+          console.log("You lose!");
+          computerScore += 1;
+        }
+    }
+    function game() {
+        playerSelection = prompt("Rock, Paper, or Scissors?").toUpperCase();
+        console.log("You chose: " + playerSelection);
+
+        let gameObjects = ["rock", "paper", "scissors"];
+        let computerSelection = gameObjects[Math.floor(Math.random()*gameObjects.length)].toUpperCase();
+
+        console.log("Rock, Paper, Scissors, Shoot!");
+        console.log("Player: " + playerSelection + " vs. Computer: " + computerSelection);
+
+        playRound(playerSelection, computerSelection);
+      }
+    
+    game();
+    
+  </script>
+</body>
+</html>
