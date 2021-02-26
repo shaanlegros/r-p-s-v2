@@ -5,6 +5,13 @@
   <meta charset="UTF-8"/>
 </head>
 <body>
+  <h2>Player Selection</h2>
+  <div id="container">
+    <button id="ROCK">Rock</button>
+    <button id="PAPER">Paper</button>
+    <button id="SCISSORS">Scissors</button>
+  </div>
+  <div id="results"></div>
   <script>
     let playerScore = 0;
     let computerScore = 0;
@@ -29,8 +36,7 @@
           computerScore += 1;
         }
     }
-    function game() {
-        playerSelection = prompt("Rock, Paper, or Scissors?").toUpperCase();
+    function game(playerSelection) {
         console.log("You chose: " + playerSelection);
 
         let gameObjects = ["rock", "paper", "scissors"];
@@ -41,9 +47,25 @@
 
         playRound(playerSelection, computerSelection);
       }
-    
-    game();
-    
+
+      const buttons = document.querySelectorAll("button");
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          game(button.id);
+
+          const results = document.querySelector("#results");
+
+          const score = document.createElement("div");
+          score.classList.add("score");
+          score.textContent = "Score is: " + playerScore + " - " + computerScore;
+
+          results.appendChild(score);
+        });
+      });
+
+
+
   </script>
 </body>
 </html>
